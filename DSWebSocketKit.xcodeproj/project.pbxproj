@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		32E4B3EA221B887F00D8893E /* DSWebSocketKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 32E4B3E8221B887F00D8893E /* DSWebSocketKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32E4B3F1221B890600D8893E /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B3F0221B890600D8893E /* WebSocketManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		32E4B3E5221B887F00D8893E /* DSWebSocketKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSWebSocketKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E4B3E8221B887F00D8893E /* DSWebSocketKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSWebSocketKit.h; sourceTree = "<group>"; };
 		32E4B3E9221B887F00D8893E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32E4B3F0221B890600D8893E /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				32E4B3E8221B887F00D8893E /* DSWebSocketKit.h */,
 				32E4B3E9221B887F00D8893E /* Info.plist */,
+				32E4B3F0221B890600D8893E /* WebSocketManager.swift */,
 			);
 			path = DSWebSocketKit;
 			sourceTree = "<group>";
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					32E4B3E4221B887F00D8893E = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -130,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E4B3F1221B890600D8893E /* WebSocketManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +266,7 @@
 		32E4B3EE221B887F00D8893E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +284,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sai.DSWebSocketKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +293,7 @@
 		32E4B3EF221B887F00D8893E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
