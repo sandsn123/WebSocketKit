@@ -9,13 +9,64 @@
 /* Begin PBXBuildFile section */
 		32E4B3EA221B887F00D8893E /* DSWebSocketKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 32E4B3E8221B887F00D8893E /* DSWebSocketKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32E4B3F1221B890600D8893E /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B3F0221B890600D8893E /* WebSocketManager.swift */; };
+		32E4B3F4221B98A200D8893E /* Gzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E4B3F3221B98A200D8893E /* Gzip.framework */; };
+		32E4B3F6221B98AD00D8893E /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E4B3F5221B98AD00D8893E /* Reachability.framework */; };
+		32E4B3F8221B98B700D8893E /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E4B3F7221B98B700D8893E /* Starscream.framework */; };
+		32E4B3FA221B98C900D8893E /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E4B3F9221B98C900D8893E /* SwiftProtobuf.framework */; };
+		32E4B3FC221B98D500D8893E /* SwiftyRSA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E4B3FB221B98D500D8893E /* SwiftyRSA.framework */; };
+		32E4B408221BA7EF00D8893E /* client.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B3FF221BA7EE00D8893E /* client.proto */; };
+		32E4B409221BA7EF00D8893E /* authenticate.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B400221BA7EE00D8893E /* authenticate.proto */; };
+		32E4B40A221BA7EF00D8893E /* topic_configure.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B401221BA7EE00D8893E /* topic_configure.proto */; };
+		32E4B40B221BA7EF00D8893E /* date_time.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B402221BA7EE00D8893E /* date_time.proto */; };
+		32E4B40C221BA7EF00D8893E /* topic_subscribe.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B403221BA7EE00D8893E /* topic_subscribe.proto */; };
+		32E4B40D221BA7EF00D8893E /* require_authenticate.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B404221BA7EE00D8893E /* require_authenticate.proto */; };
+		32E4B40E221BA7EF00D8893E /* topic_unsubscribe.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B405221BA7EE00D8893E /* topic_unsubscribe.proto */; };
+		32E4B40F221BA7EF00D8893E /* topic_push.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B406221BA7EE00D8893E /* topic_push.proto */; };
+		32E4B410221BA7EF00D8893E /* command.proto in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B407221BA7EE00D8893E /* command.proto */; };
+		32E4B412221BA81600D8893E /* ServerTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B411221BA81500D8893E /* ServerTime.swift */; };
+		32E4B415221BAFE600D8893E /* ReconnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B414221BAFE600D8893E /* ReconnectManager.swift */; };
+		32E4B417221BF18B00D8893E /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B416221BF18B00D8893E /* Command.swift */; };
+		32E4B419221CEAF900D8893E /* HeartbeatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4B418221CEAF900D8893E /* HeartbeatManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		32E4B413221BAD5F00D8893E /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.proto";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			name = "Files '*.proto' using Script";
+			outputFiles = (
+				"${DERIVED_FILE_DIR}/proto/$(INPUT_FILE_BASE).pb.swift",
+			);
+			script = "if which protoc-gen-swift >/dev/null; then\nprotoc --proto_path=\"${SRCROOT}/${TARGET_NAME}/Protobuf/\" \\\n--swift_opt=Visibility=Public \\\n--swift_opt=FileNaming=DropPath \\\n--swift_out=\"${DERIVED_FILE_DIR}/proto/\" \\\n$INPUT_FILE_PATH\nelse\necho \"error: protoc-gen-swift not installed. Install via Homebrew: brew install swift-protobuf. See details: https://github.com/apple/swift-protobuf\"\nexit 1\nfi\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		32E4B3E5221B887F00D8893E /* DSWebSocketKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSWebSocketKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E4B3E8221B887F00D8893E /* DSWebSocketKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSWebSocketKit.h; sourceTree = "<group>"; };
 		32E4B3E9221B887F00D8893E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32E4B3F0221B890600D8893E /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
+		32E4B3F3221B98A200D8893E /* Gzip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gzip.framework; path = Carthage/Build/iOS/Gzip.framework; sourceTree = "<group>"; };
+		32E4B3F5221B98AD00D8893E /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		32E4B3F7221B98B700D8893E /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		32E4B3F9221B98C900D8893E /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
+		32E4B3FB221B98D500D8893E /* SwiftyRSA.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyRSA.framework; path = Carthage/Build/iOS/SwiftyRSA.framework; sourceTree = "<group>"; };
+		32E4B3FF221BA7EE00D8893E /* client.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = client.proto; sourceTree = "<group>"; };
+		32E4B400221BA7EE00D8893E /* authenticate.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = authenticate.proto; sourceTree = "<group>"; };
+		32E4B401221BA7EE00D8893E /* topic_configure.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = topic_configure.proto; sourceTree = "<group>"; };
+		32E4B402221BA7EE00D8893E /* date_time.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = date_time.proto; sourceTree = "<group>"; };
+		32E4B403221BA7EE00D8893E /* topic_subscribe.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = topic_subscribe.proto; sourceTree = "<group>"; };
+		32E4B404221BA7EE00D8893E /* require_authenticate.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = require_authenticate.proto; sourceTree = "<group>"; };
+		32E4B405221BA7EE00D8893E /* topic_unsubscribe.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = topic_unsubscribe.proto; sourceTree = "<group>"; };
+		32E4B406221BA7EE00D8893E /* topic_push.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = topic_push.proto; sourceTree = "<group>"; };
+		32E4B407221BA7EE00D8893E /* command.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = command.proto; sourceTree = "<group>"; };
+		32E4B411221BA81500D8893E /* ServerTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTime.swift; sourceTree = "<group>"; };
+		32E4B414221BAFE600D8893E /* ReconnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconnectManager.swift; sourceTree = "<group>"; };
+		32E4B416221BF18B00D8893E /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		32E4B418221CEAF900D8893E /* HeartbeatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -23,6 +74,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E4B3FC221B98D500D8893E /* SwiftyRSA.framework in Frameworks */,
+				32E4B3FA221B98C900D8893E /* SwiftProtobuf.framework in Frameworks */,
+				32E4B3F8221B98B700D8893E /* Starscream.framework in Frameworks */,
+				32E4B3F6221B98AD00D8893E /* Reachability.framework in Frameworks */,
+				32E4B3F4221B98A200D8893E /* Gzip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -34,6 +90,7 @@
 			children = (
 				32E4B3E7221B887F00D8893E /* DSWebSocketKit */,
 				32E4B3E6221B887F00D8893E /* Products */,
+				32E4B3F2221B98A200D8893E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -48,11 +105,52 @@
 		32E4B3E7221B887F00D8893E /* DSWebSocketKit */ = {
 			isa = PBXGroup;
 			children = (
+				32E4B3FD221BA7EE00D8893E /* Protobuf */,
 				32E4B3E8221B887F00D8893E /* DSWebSocketKit.h */,
 				32E4B3E9221B887F00D8893E /* Info.plist */,
 				32E4B3F0221B890600D8893E /* WebSocketManager.swift */,
+				32E4B414221BAFE600D8893E /* ReconnectManager.swift */,
+				32E4B418221CEAF900D8893E /* HeartbeatManager.swift */,
+				32E4B411221BA81500D8893E /* ServerTime.swift */,
+				32E4B416221BF18B00D8893E /* Command.swift */,
 			);
 			path = DSWebSocketKit;
+			sourceTree = "<group>";
+		};
+		32E4B3F2221B98A200D8893E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32E4B3FB221B98D500D8893E /* SwiftyRSA.framework */,
+				32E4B3F9221B98C900D8893E /* SwiftProtobuf.framework */,
+				32E4B3F7221B98B700D8893E /* Starscream.framework */,
+				32E4B3F5221B98AD00D8893E /* Reachability.framework */,
+				32E4B3F3221B98A200D8893E /* Gzip.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		32E4B3FD221BA7EE00D8893E /* Protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				32E4B3FE221BA7EE00D8893E /* websocket */,
+			);
+			path = Protobuf;
+			sourceTree = "<group>";
+		};
+		32E4B3FE221BA7EE00D8893E /* websocket */ = {
+			isa = PBXGroup;
+			children = (
+				32E4B3FF221BA7EE00D8893E /* client.proto */,
+				32E4B400221BA7EE00D8893E /* authenticate.proto */,
+				32E4B401221BA7EE00D8893E /* topic_configure.proto */,
+				32E4B402221BA7EE00D8893E /* date_time.proto */,
+				32E4B403221BA7EE00D8893E /* topic_subscribe.proto */,
+				32E4B404221BA7EE00D8893E /* require_authenticate.proto */,
+				32E4B405221BA7EE00D8893E /* topic_unsubscribe.proto */,
+				32E4B406221BA7EE00D8893E /* topic_push.proto */,
+				32E4B407221BA7EE00D8893E /* command.proto */,
+			);
+			path = websocket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,6 +177,7 @@
 				32E4B3E3221B887F00D8893E /* Resources */,
 			);
 			buildRules = (
+				32E4B413221BAD5F00D8893E /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -135,6 +234,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E4B3F1221B890600D8893E /* WebSocketManager.swift in Sources */,
+				32E4B415221BAFE600D8893E /* ReconnectManager.swift in Sources */,
+				32E4B40D221BA7EF00D8893E /* require_authenticate.proto in Sources */,
+				32E4B412221BA81600D8893E /* ServerTime.swift in Sources */,
+				32E4B419221CEAF900D8893E /* HeartbeatManager.swift in Sources */,
+				32E4B417221BF18B00D8893E /* Command.swift in Sources */,
+				32E4B40F221BA7EF00D8893E /* topic_push.proto in Sources */,
+				32E4B40C221BA7EF00D8893E /* topic_subscribe.proto in Sources */,
+				32E4B409221BA7EF00D8893E /* authenticate.proto in Sources */,
+				32E4B40E221BA7EF00D8893E /* topic_unsubscribe.proto in Sources */,
+				32E4B410221BA7EF00D8893E /* command.proto in Sources */,
+				32E4B408221BA7EF00D8893E /* client.proto in Sources */,
+				32E4B40A221BA7EF00D8893E /* topic_configure.proto in Sources */,
+				32E4B40B221BA7EF00D8893E /* date_time.proto in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +386,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DSWebSocketKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -301,6 +417,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DSWebSocketKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package websocket;
+
+option java_package = "com.huaying.proto.websocket";
+
+import "websocket/client.proto";
+
+// 身份验证
+message Authenticate {
+    string signature = 1;       // 签名，BASE64编码
+    int32 api_version = 2;      // 接口版本号
+    Client client = 3;          // 客户端
+}

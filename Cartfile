@@ -1,0 +1,5 @@
+github "apple/swift-protobuf" ~> 1.0.1
+github "ashleymills/Reachability.swift" ~> 4.1.0
+github "TakeScoop/SwiftyRSA" ~> 1.5.0
+github "daltoniam/Starscream" ~> 3.0.6
+github "1024jp/GzipSwift" ~> 4.0.4

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package websocket;
+
+option java_package = "com.huaying.proto.websocket";
+
+// 客户端信息
+message Client {
+    enum Kind {
+        UNSPECIFIED = 0;    // 未指定
+        IOS = 1;            // 苹果
+        ANDROID = 2;        // 安卓
+        WEB = 3;            // 网站
+    }
+
+    message Version {
+        string name = 1;    // 版本名称
+        string code = 2;    // 构建版本
+    }
+
+    string identifier = 1;  // 标识符，iOS对应bundleId，android对应applicationId
+    string name = 2;        // 名称
+    Kind kind = 3;          // 类型
+    Version version = 4;    // 版本
+    string device_id = 5;	// 设备id
+}

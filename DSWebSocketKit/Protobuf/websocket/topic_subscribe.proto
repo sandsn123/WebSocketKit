@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package websocket;
+
+option java_package = "com.huaying.proto.websocket";
+
+// 话题订阅
+message TopicSubscribe {
+    string topic = 1;           // 话题
+    bytes configuration = 2;    // 配置
+}

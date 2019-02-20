@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package websocket;
+
+option java_package = "com.huaying.proto.websocket";
+
+// 命令
+message Command {
+    enum Code {
+        REQUIRE_AUTHENTICATE = 0;   // 要求认证，payload: `RequireAuthenticate`
+        AUTHENTICATE = 1;           // 认证，payload: `Authenticate`
+        GET_CURRENT_TIME = 2;       // 获取当前时间，payload: <null>
+        CURRENT_TIME = 3;           // 当前时间，payload: `DateTime`
+        TOPIC_SUBSCRIBE = 4;        // 话题订阅，payload: `TopicSubscribe`
+        TOPIC_UNSUBSCRIBE = 5;      // 话题取消订阅，payload: `TopicUnsubscribe`
+        TOPIC_CONFIGURE = 6;        // 话题配置，payload: `TopicConfigure`
+        TOPIC_PUSH = 7;             // 话题推送，payload: `TopicPush`
+    }
+
+    Code code = 1;      // 命令代号
+    bytes payload = 2;  // 命令内容
+	bool is_gzip = 3;   // 是否启用GZIP压缩
+}

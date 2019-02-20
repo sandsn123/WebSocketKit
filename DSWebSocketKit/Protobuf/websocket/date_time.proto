@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package websocket;
+
+option java_package = "com.huaying.proto.websocket";
+
+// 时间
+message DateTime {
+    int64 unix_timestamp = 1;       // Unix时间戳, 从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数
+    int32 seconds_from_gmt = 2;     // 与0时区所相差的秒数
+}

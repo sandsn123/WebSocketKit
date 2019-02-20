@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package websocket;
+
+option java_package = "com.huaying.proto.websocket";
+
+// 话题取消订阅
+message TopicUnsubscribe {
+    // 话题
+    string topic = 1;
+    // 原因
+    bytes reason = 2;
+}

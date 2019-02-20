@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package websocket;
+
+option java_package = "com.huaying.proto.websocket";
+
+// 要求进行身份验证
+message RequireAuthenticate {
+    string connection_identifier = 1;   // 连接标识
+}
